@@ -1,0 +1,38 @@
+---
+
+language: python
+
+sudo: required
+
+env:
+  - distribution: centos
+    version:      7
+  - distribution: fedora
+    version:      26
+  - distribution: fedora
+    version:      25
+  - distribution: fedora
+    version:      24
+  - distribution: ubuntu
+    version:      xenial
+  - distribution: ubuntu
+    version:      trusty
+  - distribution: debian
+    version:      stretch
+  - distribution: debian
+    version:      jessie
+
+services:
+  - docker
+
+before_install:
+  - 'docker pull ${distribution}:${version}'
+  - sudo apt-get install -qq -y python-pip
+  - pip install --upgrade ansible
+
+script:
+  - container_name=sut
+  - 'docker run --detach --volume="$PWD":"$PWD":ro -w "$PWD" --name $container_name $distribution:$version sleep 2d'
+  - 'docker exec -it $container_name sh -c "cd tests && ./test.yml -l localhost -vv"'
+  - 'docker exec -it $container_name sh -c "cd tests && ./test.yml -l localhost -vv"'
+

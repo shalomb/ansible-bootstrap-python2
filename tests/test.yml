@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook
+
+---
+
+- name: Install python2
+  hosts: sut
+  remote_user: root
+  gather_facts: False
+  any_errors_fatal: True
+  roles:
+    - role: ansible-bootstrap-python2
+      refresh_repositories: True

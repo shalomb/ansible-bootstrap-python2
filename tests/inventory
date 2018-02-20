@@ -1,0 +1,3 @@
+localhost
+sut  ansible_connection=docker
+
