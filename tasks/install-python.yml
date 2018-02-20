@@ -1,0 +1,65 @@
+---
+
+- name: Detect OS
+  include_tasks: detect-os.yml
+  tags:
+    - python
+
+- name: Generate update_repo_cmd
+  set_fact:
+    update_repo_cmd: '{{ item.cmd }}'
+  when:
+    - item.name == os_release.id
+  with_items:
+    - name: debian
+      cmd:  apt-get update -y
+    - name: centos
+      cmd:  yum makecache
+    - name: fedora
+      cmd:  dnf makecache --timer
+    - name: opensuse
+      cmd:  zypper refresh
+    - name: ubuntu
+      cmd:  apt-get update -y
+
+- name: Update repository indices
+  raw: |
+    {{ update_repo_cmd }} 2>/dev/null
+  when:
+    - refresh_repositories == True
+    - update_repo_cmd is defined
+  register:
+    python_install
+  changed_when:
+    python_install.stdout != ""
+  tags:
+    - python
+
+- name: Generate python_install_cmd
+  set_fact:
+    python_install_cmd: '{{ item.cmd }}'
+  when:
+    - item.name == os_release.id
+  with_items:
+    - name: debian
+      cmd:  DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends python-apt python-minimal
+    - name: centos
+      cmd:  yum install -y python
+    - name: fedora
+      cmd:  dnf install -y python
+    - name: opensuse
+      cmd:  zypper -n install python python-xml
+    - name: ubuntu
+      cmd:  DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends python-apt python-minimal
+
+- name: Install python
+  raw:
+    type python >/dev/null 2>&1 ||
+      {{ python_install_cmd }} >/dev/null
+  register:
+    python_install
+  changed_when:
+    python_install.stdout != ""
+  tags:
+    - python
+

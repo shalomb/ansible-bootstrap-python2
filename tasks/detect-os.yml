@@ -1,0 +1,33 @@
+---
+
+# tasks file for bootstrap-sudo/detect-os
+
+- name: Determine os_release
+  raw:
+    . /etc/os-release && echo "{{ item }}";
+  with_items:
+    - $ID
+    - $NAME
+    - $PRETTY_NAME
+    - $VERSION_CODENAME
+    - $VERSION_ID
+  register: os_release
+
+- name: Set os_release
+  set_fact:
+    os_release:
+      id:
+        '{{ os_release.results.0.stdout | regex_replace("\n|\r", "") }}'
+      name:
+        '{{ os_release.results.1.stdout | regex_replace("\n|\r", "") }}'
+      pretty_name:
+        '{{ os_release.results.2.stdout | regex_replace("\n|\r", "") }}'
+      version_codename:
+        '{{ os_release.results.3.stdout | regex_replace("\n|\r", "") }}'
+      version:
+        '{{ os_release.results.4.stdout | regex_replace("\n|\r", "") }}'
+
+- name: debug
+  debug:
+    msg: 'os_release: {{ os_release }}'
+
