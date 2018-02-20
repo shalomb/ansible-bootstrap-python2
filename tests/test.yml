@@ -2,7 +2,7 @@
 
 ---
 
-- name: Install python2
+- name: Bootstrap the install of python2
   hosts: sut
   remote_user: root
   gather_facts: False
@@ -10,3 +10,27 @@
   roles:
     - role: ansible-bootstrap-python2
       refresh_repositories: True
+
+- name: Test the install of python2
+  hosts: sut
+  remote_user: root
+  gather_facts: True
+  any_errors_fatal: True
+  tasks:
+
+    - name: Show facts
+      setup:
+
+    - name: Test pip
+      command:
+        pip --version
+      register:
+        pip_version
+      changed_when:
+        pip_version.rc != 0
+
+    - name: Upgrade pip
+      pip:
+        name: pip
+
+
