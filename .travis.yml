@@ -28,7 +28,7 @@ services:
 before_install:
   - 'docker pull ${distribution}:${version}'
   - sudo apt-get install -qq -y python-pip
-  - pip install --upgrade ansible
+  - sudo pip install --upgrade ansible
 
 script:
   - container_name=sut
