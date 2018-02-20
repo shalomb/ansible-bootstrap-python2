@@ -1,7 +1,10 @@
 ansible-bootstrap-python2
 =========================
 
-Module to
+- [`master`](https://github.com/shalomb/ansible-bootstrap-python2/tree/master)   [![Build Status](https://travis-ci.org/shalomb/ansible-bootstrap-python2.svg?branch=master)](https://travis-ci.org/shalomb/ansible-bootstrap-python2/branches)
+- [`develop`](https://github.com/shalomb/ansible-bootstrap-python2/tree/develop) [![Build Status](https://travis-ci.org/shalomb/ansible-bootstrap-python2.svg?branch=develop)](https://travis-ci.org/shalomb/ansible-bootstrap-python2/branches)
+
+Ansible role to
 [bootstrap the installation of python
 2.x](https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f#gistcomment-2167540)
 when it is not available.
