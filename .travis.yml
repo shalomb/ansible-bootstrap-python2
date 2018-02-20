@@ -45,6 +45,7 @@ before_install:
 script:
   - container_name=sut
   - 'docker run --detach --volume="$PWD":"$PWD":ro -w "$PWD" --name $container_name $distribution:$version sleep 2d'
-  - cd tests && ./test.yml -l localhost -vv
-  - cd tests && ./test.yml -l localhost -vv
+  - cd tests
+  - ./test.yml -l localhost -vv
+  - ./test.yml -l localhost -vv
 
