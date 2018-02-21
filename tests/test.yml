@@ -26,12 +26,16 @@
         name: ca-certificates
       when:
         - ansible_os_family == "Debian"
+      tags:
+        - get-pip-dependency
 
     - name: Install python-xml
       zypper:
         name: python-xml
       when:
         - ansible_os_family == "Suse"
+      tags:
+        - get-pip-dependency
 
     - name: Install pip
       shell:
