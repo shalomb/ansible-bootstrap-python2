@@ -21,16 +21,24 @@
     - name: Show facts
       setup:
 
-    - name: Test pip
+    - name: Install pip
       command:
-        pip --version
+        cd /tmp;
+        python -c '
+          import urllib;
+          urllib.urlretrieve ("https://bootstrap.pypa.io/get-pip.py", "get-pip.py")
+        '; python get-pip.py
       register:
-        pip_version
+        pip_install
       changed_when:
-        pip_version.rc != 0
+        pip_install.rc != 0
 
-    - name: Upgrade pip
+    - name: Test pip
       pip:
-        name: pip
+        name: '{{ item }}'
+      with_items:
+        - easysetup
+        - pip
+        - ansible
 
 
