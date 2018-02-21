@@ -27,6 +27,12 @@
       when:
         - ansible_os_family == "Debian"
 
+    - name: Install python-xml
+      zypper:
+        name: python-xml
+      when:
+        - ansible_os_family == "Suse"
+
     - name: Install pip
       shell:
         cd / &&
