@@ -43,3 +43,5 @@ Example Playbook
         - bootstrap
         - python2
 
+Also see [tests/test.yml](tests/test.yml) for better examples.
+
