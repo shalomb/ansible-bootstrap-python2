@@ -1,0 +1,24 @@
+---
+
+# tasks file for ansible-bootstrap-python2
+
+- name: Detect if python is installed
+  raw:
+    type python >/dev/null 2>&1 &&
+      python -V
+  register:
+    python_probe
+  changed_when:
+    python_probe.rc != 0
+  ignore_errors:
+    True
+  tags:
+    - python
+
+- name: Install python
+  include_tasks: install-python.yml
+  when:
+    - python_probe.rc != 0
+  tags:
+    - python
+
