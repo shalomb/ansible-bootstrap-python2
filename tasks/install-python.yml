@@ -48,7 +48,7 @@
     - name: fedora
       cmd:  dnf install -y python
     - name: opensuse
-      cmd:  zypper -n install python
+      cmd:  zypper -n install python python-xml
     - name: ubuntu
       cmd:  DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends python-apt python-minimal
 

@@ -41,7 +41,7 @@ services:
 
 before_install:
   - 'docker pull ${distribution}:${version}'
-  - sudo apt-get install -qq -y python-pip python-libxml2
+  - sudo apt-get install -qq -y python-pip
   - sudo pip install --upgrade ansible
 
 script:
