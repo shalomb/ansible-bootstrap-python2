@@ -37,6 +37,4 @@
       with_items:
         - easysetup
         - pip
-        - ansible
-
 
