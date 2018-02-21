@@ -23,7 +23,8 @@
 
     - name: Install pip
       shell:
-        python -c 'import urllib; urllib.urlretrieve ("https://bootstrap.pypa.io/get-pip.py", "get-pip.py")';
+        cd / &&
+        python -c 'import urllib, ssl; urllib.urlretrieve("http://bootstrap.pypa.io/get-pip.py", "get-pip.py")' &&
         python get-pip.py
       register:
         pip_install
