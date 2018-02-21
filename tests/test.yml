@@ -21,6 +21,12 @@
     - name: Show facts
       setup:
 
+    - name: Update ca-certificates
+      apt:
+        name: ca-certificates
+      when:
+        - ansible_os_family == "Debian"
+
     - name: Install pip
       shell:
         cd / &&
