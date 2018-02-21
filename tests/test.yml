@@ -23,7 +23,7 @@
 
     - name: Install pip
       command:
-        cd /tmp;
+        cd;
         python -c '
           import urllib;
           urllib.urlretrieve ("https://bootstrap.pypa.io/get-pip.py", "get-pip.py")
