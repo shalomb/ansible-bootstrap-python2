@@ -22,11 +22,9 @@
       setup:
 
     - name: Install pip
-      command:
-        python -c '
-          import urllib;
-          urllib.urlretrieve ("https://bootstrap.pypa.io/get-pip.py", "get-pip.py")
-        '; python get-pip.py
+      shell:
+        python -c 'import urllib; urllib.urlretrieve ("https://bootstrap.pypa.io/get-pip.py", "get-pip.py")';
+        python get-pip.py
       register:
         pip_install
       changed_when:
