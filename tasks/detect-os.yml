@@ -4,7 +4,7 @@
 
 - name: Determine os_release
   raw:
-    . /etc/os-release && echo "{{ item }}";
+    LC_ALL=C . /etc/os-release && echo "{{ item }}";
   with_items:
     - $ID
     - $NAME
