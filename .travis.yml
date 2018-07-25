@@ -51,3 +51,6 @@ script:
   - ./test.yml -l "$container_name" -vv
   - ./test.yml -l "$container_name" -vv
 
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
