@@ -8,6 +8,10 @@ env:
   - distribution: centos
     version:      7
   - distribution: fedora
+    version:      28
+  - distribution: fedora
+    version:      27
+  - distribution: fedora
     version:      26
   - distribution: fedora
     version:      25
@@ -50,4 +54,7 @@ script:
   - cd tests
   - ./test.yml -l "$container_name" -vv
   - ./test.yml -l "$container_name" -vv
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
 

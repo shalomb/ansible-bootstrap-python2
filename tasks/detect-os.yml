@@ -4,7 +4,7 @@
 
 - name: Determine os_release
   raw:
-    . /etc/os-release && echo "{{ item }}";
+    LC_ALL=C . /etc/os-release && echo "{{ item }}";
   with_items:
     - $ID
     - $NAME
@@ -12,6 +12,7 @@
     - $VERSION_CODENAME
     - $VERSION_ID
   register: os_release
+  changed_when: False
 
 - name: Set os_release
   set_fact:
