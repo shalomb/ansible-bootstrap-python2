@@ -4,6 +4,9 @@ ansible-bootstrap-python2
 - [`master`](https://github.com/shalomb/ansible-bootstrap-python2/tree/master)   [![Build Status](https://travis-ci.org/shalomb/ansible-bootstrap-python2.svg?branch=master)](https://travis-ci.org/shalomb/ansible-bootstrap-python2/branches)
 - [`develop`](https://github.com/shalomb/ansible-bootstrap-python2/tree/develop) [![Build Status](https://travis-ci.org/shalomb/ansible-bootstrap-python2.svg?branch=develop)](https://travis-ci.org/shalomb/ansible-bootstrap-python2/branches)
 
+**NOTE:** This role is no longer actively maintained as Python 2.x is now [EOL](https://pythonclock.org/).
+PRs are still welcome if nominal.
+
 Ansible role to
 [bootstrap the installation of python
 2.x](https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f#gistcomment-2167540)
