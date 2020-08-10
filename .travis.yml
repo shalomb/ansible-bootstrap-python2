@@ -29,8 +29,6 @@ env:
     version:      jessie
   - distribution: debian
     version:      buster
-  - distribution: debian
-    version:      sid
   - distribution: richxsl/rhel7
     version:      latest
 
