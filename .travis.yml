@@ -29,14 +29,6 @@ env:
     version:      jessie
   - distribution: debian
     version:      buster
-  - distribution: debian
-    version:      sid
-  - distribution: opensuse
-    version:      tumbleweed
-  - distribution: opensuse
-    version:      42.3
-  - distribution: opensuse
-    version:      42.2
   - distribution: richxsl/rhel7
     version:      latest
 
