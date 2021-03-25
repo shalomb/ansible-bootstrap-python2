@@ -40,7 +40,7 @@
     - name: Install pip
       shell:
         cd / &&
-        python -c 'import urllib, ssl; urllib.urlretrieve("http://bootstrap.pypa.io/get-pip.py", "get-pip.py")' &&
+        python -c 'import urllib, ssl; urllib.urlretrieve("https://bootstrap.pypa.io/pip/2.7/get-pip.py", "get-pip.py")' &&
         python get-pip.py
       register:
         pip_install
@@ -53,4 +53,3 @@
       with_items:
         - easysetup
         - pip
-
